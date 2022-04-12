@@ -25,13 +25,13 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {LineChart, PieChart} from 'react-native-chart-kit';
+import {LineChart} from 'react-native-chart-kit';
 import colors from '@colors';
 
 // DATA
 import {SLEEP_DATA} from '@assets/data';
 
-const Home = () => {
+const Rewards = () => {
   const [visible, setVisible] = useState();
   const {User} = useSelector(state => ({...state}));
 
@@ -153,7 +153,6 @@ const Home = () => {
           </Paragraph>
           <LineChart
             data={{
-              labels: SLEEP_DATA.map((d, i) => i),
               datasets: [{data: SLEEP_DATA.map(d => d.score)}],
             }}
             width={Dimensions.get('window').width * 0.72} // from react-native
@@ -182,38 +181,6 @@ const Home = () => {
               borderRadius: 16,
             }}
           />
-          <View
-            style={{
-              borderWidth: 1,
-              marginTop: 20,
-              padding: 10,
-              borderRadius: 15,
-              borderColor: colors.white,
-            }}>
-            <Text style={[styles.timeText, {fontSize: 35, marginTop: 0}]}>
-              73% AVG.
-            </Text>
-            <Headline
-              style={{textAlign: 'center', color: colors.white, fontSize: 20}}>
-              Sleep Quality
-            </Headline>
-          </View>
-          <View
-            style={{
-              borderWidth: 1,
-              marginTop: 20,
-              padding: 10,
-              borderRadius: 15,
-              borderColor: colors.white,
-            }}>
-            <Text style={[styles.timeText, {fontSize: 35, marginTop: 0}]}>
-              2:31 AVG.
-            </Text>
-            <Headline
-              style={{textAlign: 'center', color: colors.white, fontSize: 20}}>
-              Sleep Debt
-            </Headline>
-          </View>
         </LinearGradient>
       </Modal>
     </LinearGradient>
@@ -254,4 +221,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default Rewards;

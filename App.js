@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/native';
 // REDUX
 import {Provider} from 'react-redux';
+import store from '@reducers';
 
 // UI //
 import {StatusBar} from 'react-native';
@@ -15,22 +16,26 @@ import {
   DefaultTheme as PaperDefaultTheme,
   Portal as PaperPortal,
 } from 'react-native-paper';
+import FlashMessage from 'react-native-flash-message';
 
 // STACKS //
 import AppStack from '@stacks/AppStack';
 
 const App = () => {
   return (
-    <PaperProvider>
-      <PaperPortal>
-        <SafeAreaProvider>
-          <StatusBar backgroundColor={'yellow'} barStyle="light-content" />
-          <NavigationContainer>
-            <AppStack />
-          </NavigationContainer>
-        </SafeAreaProvider>
-      </PaperPortal>
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider>
+        <PaperPortal>
+          <SafeAreaProvider>
+            <StatusBar backgroundColor={'yellow'} barStyle="light-content" />
+            <NavigationContainer>
+              <AppStack />
+              <FlashMessage position="top" />
+            </NavigationContainer>
+          </SafeAreaProvider>
+        </PaperPortal>
+      </PaperProvider>
+    </Provider>
   );
 };
 
